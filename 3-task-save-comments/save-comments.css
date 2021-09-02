@@ -1,6 +1,6 @@
 .formUsers{
     width: 50%;
-    height: 40vh;
+    /* height: 40vh; */
     border: 1px solid black
 }
 
@@ -10,6 +10,15 @@
 }
 
 #submitComment{
+    display: block;
+    margin: 0 auto;
     width: 99%;
     height: 4vh;
+}
+
+#divPhotoUser{
+    display: block;
+    width: 60px;
+    height: 80px;
+    border: 1px solid green;
 }
