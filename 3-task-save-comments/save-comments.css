@@ -1,0 +1,15 @@
+.formUsers{
+    width: 50%;
+    height: 40vh;
+    border: 1px solid black
+}
+
+#textArea{
+    width: 99%;
+    height: 20vh;
+}
+
+#submitComment{
+    width: 99%;
+    height: 4vh;
+}
