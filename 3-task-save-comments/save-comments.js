@@ -1,6 +1,8 @@
 const comment = document.getElementById('textArea');
 const submitComment = document.getElementById('submitComment');
 let userName = document.getElementById('userName');
+let urlPhoto = document.getElementById('urlPhoto');
+let photoUser = document.getElementById('photoUser');
 let allComments = [];
 
 function processingComments() {
@@ -17,7 +19,7 @@ function getComments() {
     return newComment;
 }
 
-function showName(newName) {
+function showName() {
     let getItemName = localStorage.getItem('name');
     if (getItemName !== null) {
         userName.value = getItemName;
@@ -26,9 +28,7 @@ function showName(newName) {
 
 function setName() {
     let newName = userName.value;
-    if (localStorage.getItem('name') === null) {
-        localStorage.setItem('name', newName);
-    }
+    localStorage.setItem('name', newName);
 }
 
 function checkSpam(newComment) {
@@ -51,9 +51,32 @@ function cleanInput() {
     comment.value = "";
 }
 
+function setURL() {
+    photoUser.src = urlPhoto.value;
+    localStorage.setItem('url', urlPhoto.value);
+}
+
+function showPhoto() {
+    let getItemURL = localStorage.getItem('url');
+    if (getItemURL !== null) {
+        photoUser.src = getItemURL;
+    }
+}
+
 submitComment.addEventListener('click', function (event) {
     event.preventDefault();
     processingComments();
 });
 
+urlPhoto.addEventListener('change', setURL);
+
 document.addEventListener("DOMContentLoaded", showName());
+
+document.addEventListener("DOMContentLoaded", showPhoto());
+
+document.addEventListener("DOMContentLoaded", function () {
+    let valueLocalStorageComment = localStorage.getItem('keyComment');
+    if (valueLocalStorageComment !== null) {
+        allComments.push(valueLocalStorageComment);
+    }
+});
