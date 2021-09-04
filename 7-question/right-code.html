@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./right-code.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="#">
+        <input type="text" name="userName" id="userName" placeholder="name" required>
+        <input type='tel' name='phon' id="phon"pattern="[0-9]+" title="only numbers" placeholder="phone number" required/>
+        <button type="submit" id="submit">send</button>
+    </form>
+    <script>
+let submitForm = document.getElementById('submit');
+submitForm.addEventListener('click',function(event){
+    event.preventDefolt();
+})
+    </script>
+</body>
+
+</html>
