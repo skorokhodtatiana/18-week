@@ -30,3 +30,7 @@
     display: block;
     margin: 0 auto;
 }
+
+input:valid{
+    border: 2px solid green;
+}
