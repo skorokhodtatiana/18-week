@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Опросник</title>
-    <link rel="stylesheet" href="./valid-js.css">
+    <link rel="stylesheet" href="./validationJS-2.css">
 </head>
 
 <body>
@@ -28,19 +28,18 @@
             <label for="number-phone">Номер телефона</label><br />
             <input type="number" name="номер телефона" id="numberPhone" class="inputUser"
                 placeholder="(XX)XXX XX XX" min="999999999" max="9999999999999" required />
-            <div id="phoneErrors"></div>
+            <div id="phoneErrors" class="errors"></div>
         </p>
         <p class="wrapperBlockInput">
             <label for="email">e-mail</label><br />
             <input type="email" name="email" id="email" class="inputUser" pattern="^\S+@\S+$" placeholder="Введите свой email" required />
-            <div id="emailErrors"></div>
+            <div id="emailErrors" class="errors"></div>
         </p>
         <div id="errors"></div>
         <p>
             <button id="buttonSubmit" type="submit">Сохранить</button>
         </p>
     </form>
-    <!-- <script src="./valid-js.js"></script> -->
     <script src="./validationJS-2.js"></script>
 </body>
 

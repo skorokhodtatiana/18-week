@@ -94,11 +94,11 @@ function checkEmpty() {
     // } else {
     //     errors.innerText = ""
     // };
-     if (inputs !==4) {
-             errors.innerText = 'Заполните, пожалуйста, все поля';
-        } else {
-            errors.innerText = ""
-         };
+    if (inputs !== 4) {
+        errors.innerText = 'Заполните, пожалуйста, все поля';
+    } else {
+        errors.innerText = ""
+    };
 }
 
 nameUser.addEventListener('blur', checkName);
