@@ -7,7 +7,6 @@ const numberPhone = document.getElementById('numberPhone');
 const phoneErrors = document.getElementById('phoneErrors');
 const email = document.getElementById('email');
 const emailErrors = document.getElementById('emailErrors');
-let inputs = document.querySelectorAll('input:focus');
 const userForm = document.getElementById('userForm');
 const errors = document.getElementById('errors');
 let errorArr = [];
@@ -21,27 +20,23 @@ function checkInputValidity(val) {
     }
 
     if (validity.valueMissing) {
-        errorArr.push('Заполните, пожалуйста, поле' + '\n' + input.name);
+        errorArr.push('Заполните, пожалуйста, поле' + ' ' + input.name);
     }
 
     if (validity.rangeUnderflow) {
-        errorArr.push('Слишком мало символов' + '\n' + 'в' + '\n' + input.name);
+        errorArr.push('Слишком мало символов' + ' ' + 'в' + ' ' + input.name);
     }
 
     if (validity.rangeOverflow) {
-        errorArr.push('Слишком много символов' + '\n' + 'в' + '\n' + input.name);
+        errorArr.push('Слишком много символов' + ' ' + 'в' + ' ' + input.name);
     }
 
-    // if(validity.typeMismatch){
-    //     errorArr.push('Значение не соответствует указанному атрибуту' + '\n' + input.name);
-    // }
-
     if (validity.tooLong) {
-        errorArr.push('Значение' + '\n' + input.name + '\n' + 'слишком длинное');
+        errorArr.push('Значение' + ' ' + input.name + ' ' + 'слишком длинное');
     }
 
     if (validity.tooShort) {
-        errorArr.push('Значение' + '\n' + input.name + '\n' + 'слишком короткое');
+        errorArr.push('Значение' + ' ' + input.name + ' ' + 'слишком короткое');
     }
     return errorArr;
 }
@@ -87,20 +82,6 @@ function cleanErrorsEmail() {
     emailErrors.innerText = "";
 }
 
-function checkEmpty() {
-    console.log(inputs.value);
-    // if (inputs != "") {
-    //     errors.innerText = 'Заполните, пожалуйста, все поля';
-    // } else {
-    //     errors.innerText = ""
-    // };
-    if (inputs !== 4) {
-        errors.innerText = 'Заполните, пожалуйста, все поля';
-    } else {
-        errors.innerText = ""
-    };
-}
-
 nameUser.addEventListener('blur', checkName);
 nameUser.addEventListener('click', cleanErrorsName);
 
@@ -112,8 +93,6 @@ numberPhone.addEventListener('click', cleanNumPhone);
 
 email.addEventListener('blur', checkEmail);
 email.addEventListener('click', cleanErrorsEmail);
-
-buttonSubmit.addEventListener('click', checkEmpty);
 
 buttonSubmit.addEventListener('click', function (event) {
     event.preventDefault();
