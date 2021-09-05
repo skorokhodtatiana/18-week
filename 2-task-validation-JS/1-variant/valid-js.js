@@ -1,10 +1,9 @@
 const errorMessage = document.getElementById('errorMessage');
-// const buttonSubmit = document.getElementById('buttonSubmit');
 const userForm = document.getElementById('userForm');
+let inputs = document.querySelectorAll('input');
 let errorArr = [];
 
 function checkInputValidity(input) {
-    //errorArr = [];
     let validity = input.validity;
     if (validity.patternMismatch) {
         errorArr.push('Неправильный формат ввода' + '\n' + input.name);
@@ -13,13 +12,27 @@ function checkInputValidity(input) {
     if (validity.valueMissing) {
         errorArr.push('Заполните, пожалуйста, поле' + '\n' + input.name);
     }
-    console.log(errorArr);
+
+    if (validity.rangeUnderflow) {
+        errorArr.push('Слишком мало символов' + '\n' + 'в' + '\n' + input.name);
+    }
+
+    if (validity.rangeOverflow) {
+        errorArr.push('Слишком много символов' + '\n' + 'в' + '\n' + input.name);
+    }
+
+    if (validity.tooLong) {
+        errorArr.push('Значение' + '\n' + input.name + '\n' + 'слишком длинное');
+    }
+
+    if (validity.tooShort) {
+        errorArr.push('Значение' + '\n' + input.name + '\n' + 'слишком короткое');
+    }
 }
 
 function checkInputs() {
-    //let errorArr = [];
-
-    let inputs = document.querySelectorAll('input');
+     errorArr = [];
+     errorMessage.innerHTML = "";
 
     for (input of inputs) {
         checkInputValidity(input);
@@ -28,7 +41,6 @@ function checkInputs() {
 }
 
 function cleanErrorMessage(){
-   // let errorArr = [];
     errorMessage.innerHTML ="";
 }
 
