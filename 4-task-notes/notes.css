@@ -1,0 +1,14 @@
+.body{
+    width: 99%;
+    height: 99%;
+    background-color: rgb(112, 208, 211);
+}
+
+.greeting{
+    font-family:"Comic Sans MS", cursive;
+}
+
+#textNotes{
+    width: 20%;
+    height: 15rem;
+}
