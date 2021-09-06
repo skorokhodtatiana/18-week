@@ -8,9 +8,9 @@ let allComments = [];
 function processingComments() {
     let userComment = getComments();
     let resultCorrectComment = checkSpam(userComment);
-    setKey(resultCorrectComment);
-    let setShowComments = setComments(resultCorrectComment);
-    cleanInput(setShowComments);
+    setKeyComment(resultCorrectComment);
+    let divShowComments = showComments(resultCorrectComment);
+    cleanInput(divShowComments);
     setName();
 }
 
@@ -19,9 +19,21 @@ function getComments() {
     return newComment;
 }
 
+function checkSpam(newComment) {
+    let correctComment = newComment.replace(/viagra/ig, '***').replace(/xxx/ig, '***');
+    allComments.push(correctComment);
+    return correctComment;
+}
+
+function setKeyComment(correctComment) {
+    let stringCorrectComment = allComments.join();
+    localStorage.setItem('keyComment', stringCorrectComment);
+}
+
 function showName() {
     let getItemName = localStorage.getItem('name');
-    if (getItemName !== null) {
+    // if (getItemName !== null) {
+        if (getItemName !== null) {
         userName.value = getItemName;
     }
 }
@@ -31,18 +43,8 @@ function setName() {
     localStorage.setItem('name', newName);
 }
 
-function checkSpam(newComment) {
-    let correctComment = newComment.replace(/viagra/ig, '***').replace(/xxx/ig, '***');
-    allComments.push(correctComment);
-    return correctComment;
-}
 
-function setKey(correctComment) {
-    let stringCorrectComment = allComments.join();
-    localStorage.setItem('keyComment', stringCorrectComment);
-}
-
-function setComments(correctComment) {
+function showComments(correctComment) {
     let divComment = document.getElementById('showComments');
     divComment.innerHTML += `<br/> ${correctComment}`;
 }
@@ -58,7 +60,7 @@ function setURL() {
 
 function showPhoto() {
     let getItemURL = localStorage.getItem('url');
-    if (getItemURL !== null) {
+         if (getItemURL !== null) {
         photoUser.src = getItemURL;
     }
 }
@@ -70,13 +72,11 @@ submitComment.addEventListener('click', function (event) {
 
 urlPhoto.addEventListener('change', setURL);
 
-document.addEventListener("DOMContentLoaded", showName());
-
-document.addEventListener("DOMContentLoaded", showPhoto());
-
 document.addEventListener("DOMContentLoaded", function () {
     let valueLocalStorageComment = localStorage.getItem('keyComment');
     if (valueLocalStorageComment !== null) {
         allComments.push(valueLocalStorageComment);
     }
+    showName();
+    showPhoto();
 });
