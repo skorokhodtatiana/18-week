@@ -18,9 +18,14 @@ function showDate() {
 }
 
 function setNotes() {
-    let titleNewNote = titleNote.value;
-    let textNewNote = textNotes.value;
-     localStorage.setItem(titleNewNote, textNewNote); 
+    localStorage.setItem(titleNote.value, textNotes.value);
+}
+
+function checkForm() {
+    if (titleNote.value != "" && textNotes.value != "") {
+        return true;
+    } else
+        return false;
 }
 
 function cleanForm() {
@@ -30,8 +35,12 @@ function cleanForm() {
 
 buttonSubmit.addEventListener('click', function (event) {
     event.preventDefault();
-    setNotes();
-    cleanForm();
+
+    if (checkForm()) {
+        setNotes();
+        cleanForm();
+    } else
+        alert("Заполните все поля!");
 })
 
 titleNote.addEventListener('click', showDate);
