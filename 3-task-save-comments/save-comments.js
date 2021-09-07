@@ -32,8 +32,7 @@ function setKeyComment(correctComment) {
 
 function showName() {
     let getItemName = localStorage.getItem('name');
-    // if (getItemName !== null) {
-        if (getItemName !== null) {
+        if (getItemName) {
         userName.value = getItemName;
     }
 }
@@ -55,12 +54,13 @@ function cleanInput() {
 
 function setURL() {
     photoUser.src = urlPhoto.value;
-    localStorage.setItem('url', urlPhoto.value);
+    if(urlPhoto.value){
+    localStorage.setItem('url', urlPhoto.value);}
 }
 
 function showPhoto() {
     let getItemURL = localStorage.getItem('url');
-         if (getItemURL !== null) {
+         if (getItemURL) {
         photoUser.src = getItemURL;
     }
 }
@@ -74,7 +74,7 @@ urlPhoto.addEventListener('change', setURL);
 
 document.addEventListener("DOMContentLoaded", function () {
     let valueLocalStorageComment = localStorage.getItem('keyComment');
-    if (valueLocalStorageComment !== null) {
+    if (valueLocalStorageComment) {
         allComments.push(valueLocalStorageComment);
     }
     showName();
